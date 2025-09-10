@@ -11,14 +11,14 @@ class NotificationService(private val project: Project) {
 
     fun start() {
         timer = fixedRateTimer("demo-timer", initialDelay = 0L, period = 10_000L) {
-            showNotification("Hello from your plugin 🚀")
+            showNotification()
         }
     }
 
-    private fun showNotification(message: String) {
+    private fun showNotification() {
         NotificationGroupManager.getInstance()
             .getNotificationGroup("DemoNotificationGroup")
-            .createNotification(message, NotificationType.INFORMATION)
+            .createNotification("", NotificationType.INFORMATION)
             .notify(project)
     }
 
